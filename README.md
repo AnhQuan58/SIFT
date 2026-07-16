@@ -2,13 +2,10 @@
 
 ## GPU-Accelerated Gaussian Pyramid Construction for SIFT Feature Detection
 
-| Field            | Info                                        |
-| ---------------- | ------------------------------------------- |
-| **Course**       | Applied Parallel Programming                |
-| **Track**        | Custom Topic — Computer Vision              |
-| **Team Members** | Member A &nbsp;·&nbsp; Member B             |
-| **Repository**   | https://github.com/[your-username]/sift-gpu |
-| **Submission**   | Week 6 Session                              |
+| Field      | Info                           |
+| ---------- | ------------------------------ |
+| **Course** | Applied Parallel Programming   |
+| **Track**  | Custom Topic — Computer Vision |
 
 ---
 
