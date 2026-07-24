@@ -1,7 +1,0 @@
-numpy
-numba
-cupy-cuda12x
-opencv-python
-scipy
-pytest
-matplotlib
