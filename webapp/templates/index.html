@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIFT-GPU · Live Scale-Space Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <div class="brand-text">
+        <span class="brand-title">SIFT&#8209;GPU</span>
+        <span class="brand-sub">scale-space extrema · live viewfinder</span>
+      </div>
+    </div>
+
+    <div class="backend-control">
+      <label for="backend-select">step&nbsp;1&nbsp;backend</label>
+      <select id="backend-select">
+        {% for b in backends %}
+          <option value="{{ b }}" {% if b == active %}selected{% endif %}>{{ b }}</option>
+        {% endfor %}
+      </select>
+      <span id="backend-status" class="pill">ready</span>
+    </div>
+  </header>
+
+  <main class="stage">
+    <section class="panel">
+      <div class="panel-label"><span class="tick">01</span> camera input</div>
+      <div class="frame">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img id="input-feed" src="{{ url_for('input_feed') }}" alt="Raw webcam feed" />
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-label"><span class="tick">02</span> sift output</div>
+      <div class="frame">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img id="output-feed" src="{{ url_for('output_feed') }}" alt="SIFT keypoints overlay" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="readout">
+    <div class="stat"><span class="stat-label">fps</span><span id="stat-fps" class="stat-value">&mdash;</span></div>
+    <div class="stat"><span class="stat-label">keypoints</span><span id="stat-kp" class="stat-value">&mdash;</span></div>
+    <div class="stat"><span class="stat-label">active backend</span><span id="stat-backend" class="stat-value">{{ active }}</span></div>
+    <div class="note">Steps 2&ndash;4 (localization &middot; orientation &middot; descriptor) always run via OpenCV&rsquo;s library SIFT, regardless of the Step&nbsp;1 backend selected above.</div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
